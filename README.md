@@ -55,8 +55,5 @@ Step 3: Use the repository inside the controllers
         			return $repo->sampleOne($request);       
     		}
 	}
-
-My Note 
-
-=> Actully we can use the elequent insdie the repositorieas like normal. And also it work similar to controller use. 
-=>But we can do this without interface Class
+    
+    Note: Please check my code, the doc is  only have some basic informations
