@@ -1,4 +1,5 @@
 
+<h2>Laravel Repositoey Pattern</h2>
 Reference : https://medium.com/employbl/use-the-repository-design-pattern-in-a-laravel-application-13f0b46a3dce 
 
 Previously we wrote our application logic in the controller. There’s an alternative approach to development that abstracts some calls into PHP classes called Repositories. The idea is that we can decouple models from controllers and assign readable names to complicated queries.
