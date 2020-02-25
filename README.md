@@ -4,8 +4,9 @@ Reference : https://medium.com/employbl/use-the-repository-design-pattern-in-a-l
 Previously we wrote our application logic in the controller. There’s an alternative approach to development that abstracts some calls into PHP classes called Repositories. The idea is that we can decouple models from controllers and assign readable names to complicated queries.
 
 Step 1: create a file for app/Repositories/Repository.php.
-<script>
-<?php 
+
+
+
  	namespace App\Repositories;
 	use App\Repositories\RepositoryInterface;
 	use App\User;
@@ -21,13 +22,14 @@ Step 1: create a file for app/Repositories/Repository.php.
 			return "inside The Sample Two";
 		}
 	}
-?>
-</script>
+
+
+
 Note: The implements RepositoryInterface section isn’t strictly necessary but it adds an extra layer of structure to our code. An interface is a contract that defines the methods a class MUST have defined. In our case the interface looks like this
 
 Step2: Create RepositoryInterface and define all methods
 
-<?php 
+
 	namespace App\Repositories;
 
 	interface RepositoryInterface
@@ -38,7 +40,7 @@ Step2: Create RepositoryInterface and define all methods
 
 Step 3: Use the repository inside the controllers
 
-<?php
+
 	use Illuminate\Http\Request;
 	use App\User;
 	use App\Repositories\Repository;
