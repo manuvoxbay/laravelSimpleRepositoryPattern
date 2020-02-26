@@ -87,5 +87,3 @@ Step 3: Use the repository inside the controllers
             return $response;
         }
     }
-
- Note: doc is  only have some basic informations
