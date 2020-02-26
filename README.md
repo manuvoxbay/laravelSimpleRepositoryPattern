@@ -88,4 +88,4 @@ Step 3: Use the repository inside the controllers
         }
     }
 
- Note: Please check my code, the doc is  only have some basic informations
+ Note: doc is  only have some basic informations
