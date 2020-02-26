@@ -8,42 +8,46 @@ Step 1: create a file for app/Repositories/User/UserRepository.php.
 
 
 
- 	
-namespace App\Repositories\User;
-use App\Repositories\User\RepositoryInterface;
-use App\User;
-use Validator;
 
-class UserRepository implements RepositoryInterface
-{
-    public function sampleOne($request)
-    {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+
+
+
+ 	
+     namespace App\Repositories\User;
+     use App\Repositories\User\RepositoryInterface;
+     use App\User;
+     use Validator;
+
+     class UserRepository implements RepositoryInterface
+     {
+        public function sampleOne($request)
+        {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email',
+                'password' => 'required'
+            ]);
         
-        if ($validator->fails()) {
-            //validation fail
-            return response()->json([
-                'status' => false,
-                'error' => $validator->errors()->first(),
-            ], 400);
-        }
+            if ($validator->fails()) {
+                //validation fail
+                return response()->json([
+                    'status' => false,
+                    'error' => $validator->errors()->first(),
+                ], 400);
+            }
     
-        //validation completed successfully
-        // Do all your actons here
-        return response()->json([
-            'status' => true,
-            'message' => 'validation success',
-            'data' => $request->all()
-        ], 200);
+            //validation completed successfully
+            // Do all your actons here
+            return response()->json([
+                'status' => true,
+                'message' => 'validation success',
+                'data' => $request->all()
+            ], 200);
+        }
+        public function sampleTwo()
+        {
+            return "inside The Sample Two";
+        }
     }
-    public function sampleTwo()
-    {
-        return "inside The Sample Two";
-    }
-}
 
 
 
@@ -63,25 +67,25 @@ Step2: Create RepositoryInterface and define all methods (location:app/Repositor
 Step 3: Use the repository inside the controllers
 
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Repositories\Employee\EmployeeRepository; // repository pattern
-use App\Repositories\User\UserRepository; // repository pattern
+    use Illuminate\Http\Request;
+    use App\Repositories\Employee\EmployeeRepository; // repository pattern
+    use App\Repositories\User\UserRepository; // repository pattern
 
-class EmployeeController extends Controller
-{
-    public function register(Request $request)
+    class EmployeeController extends Controller
     {
-        //comment one repository usage to check the working
-        $repo = new UserRepository(); // user repository inside employee controller
-        $res = $repo->sampleOne($request);  
-        return $res;
+        public function register(Request $request)
+        {
+            //comment one repository usage to check the working
+            $repo = new UserRepository(); // user repository inside employee controller
+            $res = $repo->sampleOne($request);  
+            return $res;
 
-        $respo = new EmployeeRepository(); // employee repository insdie employee controller
-        $response = $respo->employeeRegister($request);
-        return $response;
+            $respo = new EmployeeRepository(); // employee repository insdie employee controller
+            $response = $respo->employeeRegister($request);
+            return $response;
+        }
     }
-}
-    
-    Note: Please check my code, the doc is  only have some basic informations
+
+ Note: Please check my code, the doc is  only have some basic informations
